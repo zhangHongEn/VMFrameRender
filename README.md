@@ -1,9 +1,9 @@
 ### 小程序多次setData合并插件
 
-
-		  import VMFrameRender from ''
-
-
+			
+          
+          import VMFrameRender from ''
+          
           Page({
             onLoad () {
               // 给this添加$setData方法
