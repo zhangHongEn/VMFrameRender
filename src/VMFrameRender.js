@@ -1,4 +1,27 @@
-import {throttle} from '../../plugins/util'
+/**
+ * 节流函数
+ * @param {*} cb 
+ * @param {*} ms 
+ */
+export const throttle = (cb, ms) => {
+  let timer = null
+  let startTime = undefined
+  return function (...params) {
+    startTime = startTime || +new Date
+    let currentTime = Date.now()
+    let remaining = ms - (currentTime - startTime)
+    clearTimeout(timer)
+    if(remaining <= 0) {
+      cb.apply(this, params)
+      startTime = Date.now()
+    }else {
+      timer = setTimeout(() => {
+        cb.apply(this, params)
+        startTime = undefined
+      }, remaining)
+    }
+  }
+}
 
 /**
  * 节流
@@ -72,6 +95,8 @@ export default class VMFrameRender {
     if (typeof cb === 'function') {
       this.setDataObj.cbs.push(cb)
     }
+
+    // TODO: 可以在这里修改数据, 以实现$setData后同步修改数据
     
     _nextFrame(() => {
       this.setData()
