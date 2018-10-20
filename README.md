@@ -51,9 +51,9 @@
                }, () => {
                  console.log(this.data.name)  // 1
                })
-	       /**
-	        * 这里是undefined, 时间原因, 源码中未做数据同步, 不过在源码TODO处自行补充后即可和setData表现一致
-		*/
+		       /**
+			* 这里是undefined, 时间原因, 源码中未做数据同步, 不过在源码TODO处自行补充后即可和setData表现一致
+			*/
                console.log(this.data.name)  // undefined
 
 
